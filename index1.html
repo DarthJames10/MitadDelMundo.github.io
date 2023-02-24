@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <title>Ciudad Mitad del Mundo</title>
+	
+    <style>
+      /* Estilos para la página */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+      }
+      header {
+        background-color: #330033;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+      }
+      h1 {
+        font-size: 36px;
+        margin-top: 0;
+      }
+      section {
+        margin: 20px;
+      }
+      h2 {
+        color: #330033;
+      }
+      p {
+        color: #666;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 20px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Ciudad Mitad del Mundo</h1>
+    </header>
+    <section>
+      <h2>Atracción turística Ciudad Mitad del Mundo</h2>
+      <p>La Ciudad Mitad del Mundo es un monumento que marca la línea ecuatorial en la latitud 0° 0' 0". Se encuentra en la parroquia de San Antonio, cantón de Quito, a 26 kilómetros al norte de la ciudad de Quito, en la provincia de Pichincha, Ecuador.</p>
+      <img src="MitadDelMundo.png" alt="Ciudad Mitad del Mundo">
+      <p>En el lugar, los visitantes pueden realizar diversas actividades como tomar fotografías en la línea ecuatorial, visitar el Museo Etnográfico, el Museo de Sitio Inti Ñan, y el Planetario, entre otras. También hay una plaza de comidas y varios locales de artesanías y souvenirs.</p>
+      <img src="MitadDelMundo2.png" alt="Ciudad Mitad del Mundo">
+	  <form>
+        <label for="latitud">Latitud:</label>
+        <input type="text" id="latitud" name="latitud"><br><br>
+        <label for="longitud">Longitud:</label>
+        <input type="text" id="longitud" name="longitud"><br><br>
+        <input type="button" value="Calcular distancia" onclick="calcularDistancia()">
+      </form>
+      <p id="distancia"></p>
+	 
+	
+    </section>
+	<script>
+		function calcularDistancia() {
+		  // Coordenadas de la Ciudad Mitad del Mundo
+		  const lat1 = -0.002105;
+		  const lon1 = -78.455583;
+		  // Coordenadas ingresadas por el usuario
+		  const lat2 = parseFloat(document.getElementById("latitud").value);
+		  const lon2 = parseFloat(document.getElementById("longitud").value);
+		  // Conversión de grados a radianes
+		  const radlat1 = Math.PI * lat1/180;
+		  const radlat2 = Math.PI
+		  const theta = lon1-lon2;
+  const radtheta = Math.PI * theta/180;
+
+  // Fórmula Haversine
+  let dist = Math.sin(radlat1) * Math.sin(radlat2) + 
+            Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+  dist = Math.acos(dist);
+  dist = dist * 180/Math.PI;
+  dist = dist * 60 * 1.1515 * 1.609344; // Distancia en kilómetros
+
+  document.getElementById("distancia").innerHTML = "La distancia a la Mitad del Mundo es " + dist.toFixed(2) + " km.";
+
+
+		}
+	</script>
+
+
+  </body>
+</html>
